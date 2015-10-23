@@ -20,7 +20,7 @@ There are three things your server is expected to handle.
 ![Text Files](t.png)
 
 ##Binary Files
-![Binary Files(b.png)
+![Binary Files](b.png)
 
 I would recommend you implement things in the order listed.
 
