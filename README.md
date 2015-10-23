@@ -11,16 +11,16 @@ Though the default port for gopher is 70, we will be using port 1337.
 There are three things your server is expected to handle.
 
 ##Initial connection as diagramed:
-[!initial connection][i.png]
+![initial connection](i.png)
 
 ##Directory Listing
-[!Directory Listing][d.png]
+![Directory Listing](d.png)
 
 ##Text files
-[!Text Files][t.png]
+![Text Files](t.png)
 
 ##Binary Files
-[!Binary Files][b.png]
+![Binary Files(b.png)
 
 I would recommend you implement things in the order listed.
 
