@@ -1,66 +1,63 @@
-# Gopher Go Challange
 
-## Gophers getting the Gopher Protocol.
+Challange for Oct.
 
-For this challenge we are going to build a simple gopher server. Gopher was an 
-internet protocol that predate HTTP. It's a simple [protocol](http://www.ietf.org/rfc/rfc1436.txt), but we are going to 
-build a simpler version of it. 
 
-Though the default port for gopher is 70, we will be using port 1337.
+http://www.ietf.org/rfc/rfc1436.txt
 
-There are three things your server is expected to handle.
+We are going to implement a simplifed version of the Gopher Protocol. 
 
-##Initial connection as diagramed:
-[!initial connection][i.png]
+Default port 70.
 
-##Directory Listing
-[!Directory Listing][d.png]
 
-##Text files
-[!Text Files][t.png]
 
-##Binary Files
-[!Binary Files][b.png]
+	Client:			{Opens connection to rawBits.micro.umn.edu at port 70}
 
-I would recommend you implement things in the order listed.
+	Server:			{Accepts connection but says nothing}
 
-## Some Hints and Examples:
+	Client: <LF><LF>	{Sends an empty line: Meaning "list what you have"}
 
-Here is some code for listening for a connection.
+	Server:			{Sends a series of lines, each ending with CR LF}
+		0About internet GopherFStuff:About usFrawBits.micro.umn.eduF70
+		1Around University of MinnesotaFZ,5692,AUMFunderdog.micro.umn.eduF70
+		1Microcomputer News & PricesFPrices/Fpserver.bookstore.umn.eduF70
+		1Courses, Schedules, CalendarsFFevents.ais.umn.eduF9120
+		1Student-Staff DirectoriesFFuinfo.ais.umn.eduF70
+		1Departmental PublicationsFStuff:DP:FrawBits.micro.umn.eduF70
+				{.....etc.....}
+		.		{Period on a line by itself}
+				{Server closes connection}
 
-```go
-go func() {
-	var err error
-	if r.listener, err = net.Listen("tcp", ":1337"); err != nil {
-		log.Fatalln(err)
-	}
 
-	log.Println("Chat room started: 6000")
 
-	for {
-		conn, err := r.listener.Accept()
-		if err != nil {
-			// Check if the error is temporary or not.
-			if e, ok := err.(temporary); ok {
-				if !e.Temporary() {
-					log.Println("Temporary: Chat room shutting down")
-					r.wg.Done()
-					return
-				}
-			}
+	0 Item is a file
+	1 Item is a directory
+	2 Item is a CSO phone-book server
+	3 Error
+	4 Item is a BinHexed Macintosh file.
+	5 Item is DOS binary archive of some sort.
+		Client must read until the TCP connection closes.  Beware.
+	6 Item is a UNIX uuencoded file.
+	7 Item is an Index-Search server.
+	8 Item points to a text-based telnet session.
+	9 Item is a binary file!
+		Client must read until the TCP connection closes.  Beware.
+	+ Item is a redundant server
+	T Item points to a text-based tn3270 session.
+	g Item is a GIF format graphics file.
+	I Item is some kind of image file.  Client decides how to display.
 
-			log.Println("accept-routine", err)
-			continue
-		}
 
-		// Add this new connection to the room.
-		// Do the work with the connection.
-	}
-}()
+#For This months challange we are going to implement a simpilifed Gopher Server
 
-```
-This code was lifited from [here](https://github.com/ardanlabs/gotraining/blob/master/09-concurrency_patterns/chat/chat.go).
+   This server will have to following behavior.
 
-Please, consult it for more information.
+   The server will listen on port 1337. 
+   For this server we will only support 
+   0,1,9,I
 
-If there is any confusion please ask; and I will try and clarify.
+# The application will be started as follows
+   sdgopher directory_to_serve
+
+   using telenet we will connect to the 
+
+
